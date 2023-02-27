@@ -4,347 +4,143 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <title>Measuring and Strengthening the Security of DeFi</title>
-    <meta name="description"
-          content="Ethereum grant application - systematically categorize and evaluate DeFi attacks and potential defenses."/>
+    <title>Ethereum grant application 2023 - Blockchain Censorship - Quantitative Analysis of Censorship on Public Blockchains - Anton Wahrstätter, Jens Ernstberger, Aviv Yaish, Liyi Zhou, Kaihua Qin, Sebastian Steinhorst, Davor Svetinovic, Nicolas Christin, Mikołaj Barczentewicz, Arthur Gervais</title>
+    <meta name="description" content="Ethereum grant application. Machine Learning on a network level to find anomalies and enable early warning systems for issues that start occurring."/>
     <meta name="keywords" content="blockchain, security, machine learning"/>
     <link rel="stylesheet" href="https://latex.now.sh/style.css">
 </head>
 
 <body>
-<h1>Measuring and Strengthening the Security of DeFi</h1>
+<h1>Blockchain Censorship - Quantitative Analysis of Censorship on Public Blockchains</h1>
 <p class="author">
-    <b><i>In Alphabetical Order</i></b> <br/>
-    Arthur Gervais (arthur@gervais.cc) <br/>
-    Dawn Song (dawnsong@gmail.com) <br/>
-    Jens Ernstberger (jens.ernstberger@tum.de) <br/>
-    Kaihua Qin (kaihua.qin@imperial.ac.uk) <br/>
-    Liyi Zhou (liyi.zhou@imperial.ac.uk) <br/>
-    Stefanos Chaliasos (s.chaliasos21@imperial.ac.uk) <br/>
-    <b><i>Last Update: February 26, 2023</b></i>
+    Anton Wahrstätter, Jens Ernstberger, Aviv Yaish, Liyi Zhou, Kaihua Qin, Sebastian Steinhorst, Davor Svetinovic, Nicolas Christin, Mikołaj Barczentewicz, Arthur Gervais<br>
+    <br>
+    Email: arthur (at) gervais (dot) cc<br> 
+    Last Update: February 27, 2023
 </p>
 
 <div class="abstract">
     <h2>Project Abstract</h2>
     <p style="text-align:left;">
-        In this grant proposal, we aim to build on our existing work and contribute to the security of the decentralized
-        finance (DeFi) ecosystem. Leveraging our previous work (<a href="https://arxiv.org/abs/2208.13035">https://arxiv.org/abs/2208.13035</a>),
-        we will expand our dataset and refine the reference framework to systematically categorize and evaluate DeFi
-        incidents and potential defenses. Our project will focus on investigating rescue time frame, emergency pause
-        mechanisms, and other novel defense mechanisms based on our expanded dataset.
-    </p><br/>
-
-    <p style="text-align:left;">
-        This project makes significant contributions to the Ethereum and DeFi ecosystem by enhancing the security of
-        DeFi protocols. With the rapid growth and increasing complexity of DeFi protocols, security has become a
-        critical issue. The refined reference framework and novel defense mechanisms developed in this project will
-        enable the development of more secure and robust DeFi protocols. By making our dataset open-source and
-        accessible to the wider community, we aim to promote further research in this area. We intend to present the
-        results and findings through talks and visualizations to make them accessible to a wider audience. Ultimately,
-        this proposal will help to increase confidence in the DeFi ecosystem and provide a more secure platform for
-        users to participate in DeFi activities.
+    This research proposal aims to investigate the implications of blockchain censorship, with a particular focus on the impact of the U.S. Office of Foreign Assets Control (OFAC) sanctions on the neutrality and censorship-resistance of permissionless blockchains. The research will formalize, quantify, and analyze the security impact of blockchain censorship, by providing a holistic overview of censorship on the consensus layer and application layer, dissecting the quantitative extent of censorship, and investigating the historical transaction confirmation latency on Ethereum.
+        
+     
     </p>
+ 
 </div>
 
 <main>
     <article>
         <h2 id="objectives">Objectives</h2>
-
-        <h5>
-            What are you hoping to accomplish with this grant?
-        </h5>
-
-        <p>The grant proposal aims to achieve the following objectives:</p>
-
-        <ul>
-            <li>
-                We will expand the DeFi incident dataset to cover the period up to 2023, in order to include a more
-                diverse range of incidents, academic papers, and security audit reports.
-            </li>
-            <li>
-                Develop a refined reference framework to systematically categorize and evaluate DeFi incidents and
-                potential defenses.
-            </li>
-            <li>
-                Further explore defense mechanisms based on the expanded dataset. Measure the effectiveness of the
-                defense mechanisms and identify any gaps that need further research.
-            </li>
-            <li>
-                Visualize and disseminate the results and dataset to the broader academic and practitioner communities
-                to facilitate further research and the development of more secure and robust DeFi protocols.
-            </li>
-        </ul>
-
-        <h5>
-            How do you define and measure success for this project?
-        </h5>
-
-        <p>We define success for this project as:</p>
-
-        <ul>
-            <li>
-                The expanded dataset and reference framework should provide a more comprehensive understanding of the
-                security landscape of the DeFi ecosystem, including the most common types of DeFi incidents and
-                potential defense mechanisms.
-            </li>
-            <li>
-                The proposed defense mechanisms should demonstrate measurable improvements in security against known and
-                unknown DeFi incidents.
-            </li>
-            <li>
-                The results and dataset should be widely disseminated and adopted by the academic and practitioner
-                communities, leading to the development of more secure and robust DeFi protocols.
-            </li>
-        </ul>
-
+        
+        <p style="text-align:left;">
+       The objectives of this research can be grouped into four main areas. The first objective is to define censorship for blockchains, capturing various system layers and temporal features. This will involve providing a clear and comprehensive definition of censorship and identifying the different ways in which censorship can occur within a blockchain system. Specifically, we will focus on censorship on the consensus layer, as validator nodes are responsible for including transactions in a block, and censorship on the application layer, as smart contracts can prevent successful execution of transactions included in a block.
+        </p>
+        <p style="text-align:left;">
+        The second objective of this research is to quantify the extent of censorship performed by Ethereum smart contracts, block builders, block proposers, and block relayers. To achieve this objective, we will analyze public blockchain data to identify instances of censorship and the actors involved in them. We will specifically focus on the impact of OFAC sanctions on the trustless Tornado Cash cryptocurrency tumbler and compare the situation on Ethereum with the situation on Bitcoin, where the trust-requiring Bitcoin mixer Blender.io has also been sactioned.
+        </p>
+        <p style="text-align:left;">
+        The third objective is to provide quantitative evidence of the historical transaction confirmation latency on Ethereum. We will investigate the time it takes for a transaction to be confirmed and included in a block on the Ethereum blockchain, before and after the implementation of OFAC sanctions. We will also examine the impact of Ethereum’s move to Proposer/Builder Separation (PBS) on transaction confirmation latency and inclusion delays. Special focus will be put on the distinction between interactions with sanctioned entities such as the Tornado Cash Pool contracts and the TORN token, which represents an ERC-20 token that part of Tornado Cash's governance structure. By examining the impact on TORN we can draw conclusions on the potential impact of sanctions on other similar tokens.
+        </p>
+        <p style="text-align:left;">
+        By achieving these objectives, we aim to provide a comprehensive overview of the extent and impact of blockchain censorship, with a particular focus on the impact of OFAC sanctions on the neutrality and security of permissionless blockchains. We expect to provide valuable insights into the vulnerabilities of blockchain systems and the ways in which they can be compromised by malicious actors or third-party interventions. We also expect to identify potential solutions and strategies for increasing the resilience of blockchain systems against censorship and other related threats.
+        </p>
 
         <h2 id="services">Outcomes</h2>
-
-        <h5>How does this project benefit the greater Ethereum ecosystem?</h5>
-
+        
         <p style="text-align:left;">
-            This project's outcomes will provide a better understanding of the security landscape of the DeFi ecosystem,
-            identify the most common types of DeFi incidents, evaluate potential defense mechanisms, and develop a
-            refined reference framework and novel defense mechanisms. These outcomes will enable the development of more
-            secure and robust DeFi protocols and increase confidence in the DeFi ecosystem.
+        The first outcome is a comprehensive understanding of the extent of blockchain censorship and its impact on the security of permissionless blockchains. By providing a clear and comprehensive definition of censorship, as well as quantitative evidence of the extent and actors involved in censorship, we aim to provide a detailed understanding of the ways in which censorship can compromise the security and neutrality of blockchain systems.
         </p>
 
         <p style="text-align:left;">
-            Additionally, the open-source dataset and visualization tools will make it easier for future researchers to
-            extend the dataset and conduct further research in the area.
-        </p>
-
-        <h2 id="scope">Grant Scope</h2>
-
-        <h5>What are you going to research?</h5>
-
+        The second outcome of this research is comparision of the impact of the OFAC sanctions on privacy-enhancing applications on the Bitcoin and the Ethereum blockchain. While Tornado Cash funcitons fully decentrally, Blender.io was a trust-required application that can be more easily corrupted in censoring attempts than than distributed, autonomous applications.</p>
         <p style="text-align:left;">
-            This grant proposal aims to expand the dataset of DeFi incidents on Ethereum and Binance Smart Chain (BSC)
-            to 2023, including a wider range of incidents, academic papers, and security audit reports. The project will
-            investigate potential defense mechanisms, such as rescue time frame and emergency pause mechanisms, and
-            other novel defense mechanisms based on the expanded dataset.
-        </p>
-
-        <h5>What is the expected output?</h5>
-
-        <p style="text-align:left;">
-            The expected output of the project is a refined reference framework that systematically categorizes and
-            evaluates DeFi incidents and potential defenses on all DeFi enabled blockchains. The research will also
-            provide a more comprehensive understanding of the security landscape of the DeFi ecosystem on both chains,
-            and the results will enable the development of more robust and secure DeFi protocols on Ethereum and Binance
-            Smart Chain.
-        </p>
-
-        <p style="text-align:left;">
-            The output of this grant will also be an open-source dataset, visualization tools. We will also publish
-            research papers, present our findings at conferences, and give talks to advertise the results and make them
-            more accessible to the wider community.
+        Third, we provide quantitative evidence of the historical transaction confirmation latency on Ethereum and the imapct of censorship. By analyzing the time it takes for transactions to be confirmed and included in a block, we aim to provide valuable insights into the potential risks and vulnerabilities associated with sanction-based transaction confirmation delays.
         </p>
 
 
         <h2 id="scope">Project Team</h2>
-
+        The project team consists of ten people, 5 professors and 5 PhD students.
+        </p>
         <p style="text-align:left;">
-            The project team consists of six members, including two professors and four PhD students.
+        Arthur Gervais, Associate Professor at UCL, and Anton Wahrstätter, PhD at WU Vienna, will be leading the project as the principal investigators. They will be responsible for the overall direction and management of the project, including the quantitative analysis and the writing of the scientific paper.
         </p>
 
-        <p style="text-align:left;">
-            Arthur Gervais, Associate Professor at UCL, and Dawn Song, Professor at UC Berkeley, will serve as the
-            principal investigators and will be responsible for the overall direction and management of the project.
-        </p>
-
-        <p style="text-align:left;">
-            Liyi Zhou will lead the data collection and overall analysis. Jens Ernstberger, Kaihua Qin, and Stefanos
-            Chaliasos, the other three PhD students, will support the data collection and analysis.
-        </p>
 
         <h2 id="scope">Background</h2>
-
-        <h5>
-            Give us a bit of info and include relevant links, if available! Please provide other projects or research
-            papers (ideally public and/or open source), engagements or other types of proof that your team has the
-            necessary experience to undertake the project you are applying for.
-        </h5>
-
+        The project team has extensive experience in the field of blockchain and security research.
+        
         <p style="text-align:left;">
-            The project team has extensive experience in the field of blockchain and security research:
-        </p>
-
-        <ul>
-            <li>
-                Arthur Gervais is an Associate Professor at University College London (UCL) and a leading expert in the
-                field of blockchain security. He has published numerous papers on the security and privacy of blockchain
-                systems, including <a href="https://eprint.iacr.org/2016/555">On the security and performance of proof
-                of work blockchains</a>, a <a href="https://www.mlsec.org/topnotch/sec_top100.html">top-100 information
-                security paper of all time</a>.
-            </li>
-            <li>
-                Dawn Song is a Professor at the University of California, Berkeley, and a renowned expert in computer
-                security and privacy. She has published over 100 research papers on various topics, including blockchain
-                and security, and has won numerous awards for her contributions to the field. She is also co-Director of
-                <a href="https://rdi.berkeley.edu">Berkeley Center for Responsible Decentralized Intelligence (RDI)</a>,
-                a research center focused on the development of responsible and secure AI and blockchain technologies.
-            </li>
-            <li>
-                Jens Ernstberger, Kaihua Qin, Liyi Zhou, and Stefanos Chaliasos are PhD students working with both Dawn
-                Song and Arthur Gervais. <u>With their diverse backgrounds and expertise in blockchain security,
-                programming language research, cryptography, and privacy, they complement each other and form a strong
-                team for this project.</u> In total, they have published more than 20 high-quality papers during their
-                PhDs. For more details, please refer to their Google Scholar profiles:
-                <ul>
-                    <li><a href="https://scholar.google.com/citations?user=9B8qrkgAAAAJ">Jens' Google Scholar</a></li>
-                    <li><a href="https://scholar.google.com/citations?user=-NPCrhcAAAAJ">Kaihua's Google Scholar</a>
-                    </li>
-                    <li><a href="https://scholar.google.com/citations?user=xEXQBfMAAAAJ">Liyi's Google Scholar</a></li>
-                    <li><a href="https://scholar.google.com/citations?user=ZuBDDpIAAAAJ">Stefanos's Google Scholar</a>
-                    </li>
-
-                </ul>
-            </li>
-        </ul>
-
-        <h5>Any links for us to review? E.g. research papers, blog posts, etc.</h5>
-
-        <p style="text-align:left;">
-            The most relevant paper to this grant proposal is our previously published paper on DeFi attacks (<a
-                href="https://arxiv.org/abs/2208.13035">https://arxiv.org/abs/2208.13035</a>), which will appear in the
-            IEEE Security and Privacy 2023 (SSP'23), as well as at the Stanford Blockchain Conference (SBC).
+            Anton Wahrstätter is a PhD student at WU Vienna, and an active contributor to Open-Source projects.
+            His research is particularitly focused on privacy and security  related questions about public blockchain technologies. 
         </p>
 
         <p style="text-align:left;">
-            In addition, the project team has also worked on various open-source and educational projects related to
-            blockchain and security, including:
+        Arthur Gervais is an Associate Professor at University College London (UCL) and a leading expert in the field of blockchain security. He has published numerous papers on the security and privacy of blockchain systems, including <a href="https://eprint.iacr.org/2016/555">On the security and performance of proof of work blockchains</a>, a <a href="https://www.mlsec.org/topnotch/sec_top100.html">top-100 information security paper of all time</a>.
+        </p>
+
+        
+
+        <p style="text-align:left;">
+        Liyi Zhou is a PhD student at UCL, working with Arthur Gervais. He has previously worked on blockchain security and privacy research, including a recent paper on the <a href="https://arxiv.org/abs/2101.05511">Blockchain Dark forest</a>, and on recent <a href="https://eprint.iacr.org/2022/1773">DeFi Attacks</a>.
+        </p>
+
+
+
+        The project team has also worked on various open-source and educational projects related to blockchain and security, including:
         <ul>
             <li><a href="https://defi-learning.org/">Massive Open Online Course on Decentralized Finance</a></li>
-            <li><a href="https://www.youtube.com/playlist?list=PLS01nW3RtgoqeqHqOZ7NYdPR9CJRGZxf7">Podcast Fireside Chat
-                with DeFi leaders</a></li>
+            <li><a href="https://www.youtube.com/playlist?list=PLS01nW3RtgoqeqHqOZ7NYdPR9CJRGZxf7">Podcast Fireside Chat with DeFi leaders</a></li>
             <li><a href="https://github.com/arthurgervais/Bitcoin-Simulator">Blockchain Network Simulator</a></li>
             <li><a href="http://www.blockchainworkbench.com">Blockchain Workbench, a solidity learning platform</a></li>
         </ul>
-        </p>
 
+        In addition, the project team has published numerous papers in top-tier academic conferences and journals, including IEEE Symposium on Security and Privacy, USENIX Security Symposium, and ACM Conference on Computer and Communications Security. Overall, the project team has the necessary experience and expertise to undertake the proposed research project on developing and evaluating BlockGPT for anomaly detection of EVM transactions.
 
         <h2 id="scope">Methodology</h2>
+        To achieve our research objectives, we plan to follow the following methodology:
 
-        <h5>How do you plan to achieve your research objectives?</h5>
+        <ol>
+            <li>
+                <b>Collect data:</b> The proposed research will require extensive data collection from blockchain networks, including Ethereum and Bitcoin. This will involve collecting blockchain data and transaction logs to identify instances of censorship, including the actors involved in implementing censorship and the extent of its impact on the blockchain network. We will also collect data on transaction confirmation latency and inclusion delays, before and after the implementation of OFAC sanctions, to identify potential risks and vulnerabilities associated with transaction confirmation delays. Data collection will be an important component of this research, and we will use a range of data analysis techniques and software to extract and analyze the data in a rigorous and systematic manner.</b> 
+            </li>
 
-        <p style="text-align:left;">
-            To achieve our research objectives, we plan to use a combination of qualitative and quantitative research
-            methods. The initial phase of the project will involve an extensive review of existing literature on DeFi
-            incidents, including academic papers, security audit reports, and other relevant sources. We will use this
-            review to develop a comprehensive reference framework for DeFi incidents and potential defenses.
-        </p>
+            <li>
+                <b>Data visualisation:</b> Data visualization will be an important component of this research to uncover instances of censorship and create comparable visualizations of the data. We will use a range of visualization techniques to identify patterns and trends in the data. These visualizations will be used to uncover instances of censorship and to compare the impact of OFAC sanctions on different blockchain networks, including Ethereum and Bitcoin. The visualizations will be used to highlight the potential impact of censorship on the security and neutrality of blockchain systems. By using a range of visualization techniques, we aim to provide a clear and comprehensive overview of the data, and to identify patterns and trends that may be missed by more traditional data analysis techniques.
+            </li>
 
-        <p style="text-align:left;">
-            We will then expand our dataset of DeFi incidents to include a wider range of incidents, academic papers,
-            and security audit reports by at least six months. We will use this expanded dataset to investigate advanced
-            byte code detection, rescue time frame and emergency pause mechanisms, and other novel defense mechanisms.
-        </p>
+            <li>
+                <b>Data Analysis:</b> The analysis of our data will be a crucial part of this research, and we will use a range of statistical methods to analyze the data and identify patterns and trends. Specifically, we will use hypothesis testing  to test the significance of our findings. The use of statistical methods will be critical to the success of this research, as it will allow us to draw meaningful conclusions from the data and to provide rigorous and robust evidence to support our findings. Overall, the analysis of our data will be a key component of this research, and we will use a range of statistical methods to analyze the data in a rigorous and systematic manner.
+            </li>
 
-        <p style="text-align:left;">
-            To measure the effectiveness of our defense mechanisms, we will conduct experiments to simulate attacks on
-            DeFi protocols using our expanded dataset. We will use this data to evaluate the effectiveness of our
-            proposed defense mechanisms and to identify areas for improvement.
-        </p>
+            <li>
+                <b>Interpretation:</b> We aim to provide insights into the vulnerabilities and threats facing public blockchain systems and the potential strategies and solutions for increasing their resilience against censorship. We will use a range of data analysis techniques to interpret the data, including statistical analysis and data modeling. The findings will be interpreted in the context of existing literature and research on blockchain security and censorship-resilience, and we will compare our findings to previous studies to identify areas of agreement and disagreement. We will also use our findings to identify potential strategies and solutions for increasing the resilience of public blockchain systems against censorship.
+            </li>
 
-        <p style="text-align:left;">
-            Finally, we plan to make our dataset open-source and more accessible to the wider community by giving talks
-            and advertising our results. We intend to visualize everything beautifully so that future research can
-            easily extend our dataset.
-        </p>
+           
+            
+        </ol>
+        By following this methodology, we expect to achieve our research objectives of effectively measuring blockchain censorship on public blockchains and provide an insightful comparison between the largest blockchain protocols, Bitcoin and Ethereum.
 
         <h2 id="scope">Timeline</h2>
-
-        <p style="text-align:left;">
-            The proposed project will be completed in 12 months, and will be divided into four phases: data collection
-            and cleaning, reference framework and taxonomy, defense mechanism investigation, and dissemination. The
-            following table outlines the milestones and expected deliverables for each phase, with Q1-4 corresponding to
-            quarters in 2023.
+        <p>The project is expected to take 4 months to complete, with the following timeline and milestones:</p>
+        
+        <p><b>Month 1-2:</b><br>
+        - Collect Data: This involves setting up a full node and parsing the required data. Furthermore, a special full node has already been set up for retrieving historical mempool information.<br></p>
+        <p><b>Month 2-4:</b><br>
+        - Analyse Data: Analyse the impact of the OFAC sanctions on the applications Blender.io and Tornado Cash and compare the censorship practices happening on both blockchains.<br>
         </p>
-
-        <table>
-            <tr>
-                <th>Phase</th>
-                <th>Milestones</th>
-                <th>Expected Deliverables</th>
-            </tr>
-            <tr>
-                <td>Data Collection and Cleaning</td>
-                <td>
-                    <ul>
-                        <li>Q1-Q2: Collect and clean new DeFi incidents and security audit reports from April 30, 2022,
-                            to
-                            April 30, 2023 (<b>subject to change</b>), on Ethereum and Binance Smart Chain
-                        </li>
-                        <li>Q1-Q2: Collect and clean additional academic papers on DeFi security</li>
-                    </ul>
-                </td>
-                <td>
-                    <ul>
-                        <li>A comprehensive dataset of DeFi incidents, security audit reports, and academic papers</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Reference Framework and Taxonomy</td>
-                <td>
-                    <ul>
-                        <li>Q2 - Develop and refine the DeFi reference framework</li>
-                        <li>Q3 - Systematically categorize and evaluate DeFi incidents and potential defenses</li>
-                    </ul>
-                </td>
-                <td>
-                    <ul>
-                        <li>A refined reference framework for categorizing and evaluating DeFi incidents and defenses
-                        </li>
-                        <li>A comprehensive taxonomy of DeFi incidents and defenses</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Defense Mechanism Investigation</td>
-                <td>
-                    <ul>
-                        <li>Q3 - Q4: Investigate novel defense mechanisms, including byte code detection, rescue time
-                            frame and
-                            emergency pause mechanisms
-                        </li>
-                        <li>Q4: Evaluate defense mechanisms against existing incidents and attacks</li>
-                    </ul>
-                </td>
-                <td>
-                    <ul>
-                        <li>A set of novel defense mechanisms to enhance DeFi security</li>
-                        <li>An evaluation of the effectiveness of the defense mechanisms</li>
-                    </ul>
-                </td>
-            </tr>
-            <tr>
-                <td>Dissemination</td>
-                <td>
-                    <ul>
-                        <li>Q4: Present findings at relevant academic conferences and workshops</li>
-                        <li>Q4: Open-source the dataset and code for the reference framework and defense mechanisms</li>
-                    </ul>
-                </td>
-                <td>
-                    <ul>
-                        <li>A set of academic publications presenting the project's findings</li>
-                        <li>An open-sourced dataset and code for the reference framework and defense mechanisms</li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
-
-
+      
+        
+        <p><b>Expected deliverables:</b><br>
+        - A scientific paper providing a clear picture on blockchain censorship on public blockchains with respect to the OFAC sanctions.<br>
+        - An open-source and transparent code base used for the analysis.</p>
+        
+        <p><b>Funds breakdown:</b><br>
+        - Personnel: The funds will be used to support students working on this project.<br>
+        
         <h2 id="scope">Budget</h2>
-
-        <p style="text-align:left;">
-            The proposed grant requests partial support for the four students working on this project, as well as
-            hardware
-            (e.g., database, archive nodes, servers etc.), amounting to a total of $80,000.
-        </p>
-
+        <p>For this project, we request partial support for the students working on this project, amounting to $25,000.</p>
 
     </article>
 </main>
